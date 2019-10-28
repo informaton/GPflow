@@ -118,6 +118,8 @@ class Parameter(Node):
         exception is raised.
     """
 
+    _trainable: bool = None
+
     class ParameterAttribute(enum.Enum):
         PRIOR = 'prior'
         TRANSFORM = 'transform'
