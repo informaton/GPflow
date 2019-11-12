@@ -72,7 +72,7 @@ class ActionContext:
             all dependent actions ran by owner.
     """
 
-    def __init__(self, owner: 'Action', session: Optional[tf.Session] = None):
+    def __init__(self, owner: 'Action', session: Optional[tf.compat.v1.Session] = None):
         if session is None:
             session = tf.get_default_session()
             session = get_default_session() if session is None else session

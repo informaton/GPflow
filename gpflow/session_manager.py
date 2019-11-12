@@ -28,7 +28,7 @@ class _DefaultSessionKeeper:
     session = None
 
 
-class TracerSession(tf.Session):
+class TracerSession(tf.compat.v1.Session):
     def __init__(self, output_file_name=None, output_directory=None,
                  each_time=None, **kwargs):
         self.output_file_name = output_file_name

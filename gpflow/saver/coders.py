@@ -77,7 +77,7 @@ BasicType = Union[
     Parameter, Parameterized,
     ParamList, Transform, Prior]
 
-TensorType = Union[tf.Variable, tf.Tensor, tf.Operation, tf.data.Iterator]
+TensorType = Union[tf.Variable, tf.Tensor, tf.Operation, tf.compat.v1.data.Iterator]
 DictBasicType = Dict[str, BasicType]
 ListBasicType = List[BasicType]
 

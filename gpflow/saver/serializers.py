@@ -43,5 +43,6 @@ class HDF5Serializer(BaseSerializer):
             h5file.create_dataset(name='data', data=data)
 
     def load(self, pathname_or_file_like):
-        with h5py.File(pathname_or_file_like) as h5file:
-            return h5file['data'].value
+        with h5py.File(pathname_or_file_like, 'r') as h5file:  # explicitly set 'r' mode @hyatt 11/12/2019
+            return h5file['data'][()]
+            # return h5file['data'].value  # deprecated @hyatt 11/12/2019

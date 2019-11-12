@@ -122,7 +122,7 @@ class _TensorFlowOptimizer(optimizer.Optimizer):
         if anchor:
             opt.model.anchor(session)
 
-    def _initialize_optimizer(self, session: tf.Session):
+    def _initialize_optimizer(self, session: tf.compat.v1.Session):
         var_list = self.optimizer.variables()
         misc.initialize_variables(var_list, session=session, force=False)
 
@@ -153,7 +153,7 @@ def _get_registered_optimizer(name):
 
 
 def _register_optimizer(name, optimizer_type):
-    if optimizer_type.__base__ is not tf.train.Optimizer:
+    if optimizer_type.__base__ is not tf.compat.v1.train.Optimizer:
         raise ValueError('Wrong TensorFlow optimizer type passed: "{0}".'
                          .format(optimizer_type))
     gp_optimizer = type(name, (_TensorFlowOptimizer, ), {})
@@ -163,10 +163,10 @@ def _register_optimizer(name, optimizer_type):
 
 
 # Create GPflow optimizer classes with same names as TensorFlow optimizers
-for name in dir(tf.train):
+for name in dir(tf.compat.v1.train):
     suffix = 'Optimizer'
     if name != suffix and name.endswith(suffix):
-        train_type = getattr(tf.train, name, None)
+        train_type = getattr(tf.compat.v1.train, name, None)
         if train_type is not None:
             _register_optimizer(name, train_type)
 

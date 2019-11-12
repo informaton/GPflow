@@ -24,8 +24,8 @@ import tensorflow as tf
 from . import settings
 from ._version import __version__
 
-__TRAINABLES = tf.GraphKeys.TRAINABLE_VARIABLES
-__GLOBAL_VARIABLES = tf.GraphKeys.GLOBAL_VARIABLES
+__TRAINABLES = tf.compat.v1.GraphKeys.TRAINABLE_VARIABLES
+__GLOBAL_VARIABLES = tf.compat.v1.GraphKeys.GLOBAL_VARIABLES
 
 
 def pretty_pandas_table(row_names, column_names, column_values):
